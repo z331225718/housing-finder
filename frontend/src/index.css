@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color palette - Warm refined residential */
+  --color-bg: #faf9f7;
+  --color-bg-secondary: #f0eeeb;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8f6f3;
+  --color-border: #e5e2de;
+  --color-border-light: #f0eeeb;
+
+  /* Primary - Warm terracotta */
+  --color-primary: #c4704a;
+  --color-primary-hover: #a85d3a;
+  --color-primary-light: #f5ebe6;
+
+  /* Secondary - Deep charcoal */
+  --color-secondary: #2d2a26;
+  --color-secondary-light: #4a4642;
+
+  /* Accent */
+  --color-accent: #7d9a78;
+  --color-accent-hover: #6a8666;
+
+  /* Text */
+  --color-text: #2d2a26;
+  --color-text-secondary: #6b6560;
+  --color-text-muted: #9a948d;
+
+  /* Status */
+  --color-success: #5a8f5a;
+  --color-warning: #d4a04a;
+  --color-error: #c45a4a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(45, 42, 38, 0.04);
+  --shadow-md: 0 4px 12px rgba(45, 42, 38, 0.08);
+  --shadow-lg: 0 8px 24px rgba(45, 42, 38, 0.12);
+  --shadow-xl: 0 16px 48px rgba(45, 42, 38, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-secondary);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200;
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-text-muted);
+}
+
+/* Card styles */
+.card {
+  @apply rounded-xl transition-all duration-300;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Input styles */
+.input {
+  @apply w-full px-4 py-2.5 rounded-lg border transition-all duration-200;
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Select styles */
+.select {
+  @apply w-full px-4 py-2.5 rounded-lg border transition-all duration-200 appearance-none cursor-pointer;
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Table styles */
+.table {
+  @apply w-full;
+}
+
+.table th {
+  @apply px-4 py-3 text-left text-xs font-medium uppercase tracking-wider;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-secondary);
+}
+
+.table td {
+  @apply px-4 py-3 text-sm;
+}
+
+.table tr {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.table tr:hover {
+  background-color: var(--color-surface-hover);
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-hover);
+}
+
+.badge-success {
+  background-color: #e8f5e9;
+  color: var(--color-success);
+}
+
+.badge-warning {
+  background-color: #fef3e2;
+  color: var(--color-warning);
+}
+
+/* Page background with subtle pattern */
+.page-bg {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(196, 112, 74, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(125, 154, 120, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(196, 112, 74, 0.02) 0%, transparent 40%);
+}
